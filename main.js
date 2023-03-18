@@ -19,6 +19,9 @@ let person3 = {
 }
 
 
+console.log(Object.keys(person3))
+ 
+
 //=======Exercise #2=========//
 /*
 Write an object prototype for a Person that has a name and age, has a
@@ -29,13 +32,29 @@ both of their infos and increment one persons
 age by 3 years. Use an arrow function for both methods
 */
 
-// Create our Person Prototype
 
+function person(name, age){
+    this.name = name;
+    this.age = age;
 
-// Use an arrow to create the printInfo method
+    this.addAge = (up) => {
+        let increase = age;
+        increase += up;
+        return increase;
+    };
 
-// Create another arrow function for the addAge method that takes a single parameter
-// Adding to the age 
+    this.printInfo = () => {
+        console.log(`Hi i am ${name} and I'm ${age} year(s) old`)
+    }
+}
+
+let John = new person('John', 15)
+let Susan = new person('Susan', 18)
+
+console.log(John.printInfo())
+console.log(John.addAge(1))
+console.log(Susan.addAge(3))
+
 
 
 // =============Exercise #3 ============//
@@ -45,3 +64,15 @@ age by 3 years. Use an arrow function for both methods
     If the length is greater than ten console log "Big word". 
     If the length of the string is less than 10 console log "Small Number"
 */
+
+const isBigWord = (word) => {
+    return new Promise( () =>{
+        if(word.length >= 10){
+            console.log('Big Word')
+        } else {
+            console.log('Small Number')
+        }
+    })
+}
+
+isBigWord('app')
